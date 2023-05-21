@@ -10,13 +10,18 @@
 // You will use these later.
 PImage face;
 PImage mustache;
-
+int x;
+int y;
+boolean hasClicked=false;
 
 void setup() {
+  size(700,700);
   
 // 2. The code below loads your face picture into the program. 
 //     Make sure the file name is correct for the face image you saved earlier
 face = loadImage("face.jpg");
+face.resize(700,700);
+
   
 // 3. Set the size of the sketch. Make it big enough to show the face you chose.
 
@@ -33,16 +38,26 @@ void draw() {
   
 // 6. DRAW FACE.    Use the background() command to make the face the background of the sketch
 //    Run the program to see if the face is drawn. Get this working before you go on.
-  
+  background(face);
 
+
+if(mousePressed) {
+  x=mouseX-256;
+  y=mouseY-97;
+  hasClicked = true;
+}
+if(hasClicked==false) {
 // 7. DRAW MUSTACHE. Use the image() command to draw the mustache.  
 //                  The image command looks like this:
-image (mustache, 200,200);
+image (mustache, mouseX-256,mouseY-97);
+} else {
+  image(mustache, x,y);
+}
 //    The numbers specify where to draw the mustache. They represent the top left corner of the image
 //    Run the program to see if the mustache is drawn on the face. Get this working before you go on.
 //    If you need to resize the mustache, do it in the setup() method after you loaded the mustache image.
   
-// 8.  MOVE.  Change the DRAW MUSTACHE code to use      mouseX, mousY      in place of the numbers.
+// 8.  MOVE.  Change the DRAW MUSTACHE code to use      mouseX, mouseY      in place of the numbers.
 //     Run the program to see the mustache move around when you move the mouse.
 
 
